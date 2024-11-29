@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:41:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/29 16:45:22 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/29 19:29:28 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	g_has_received;
 
 void	exit_kill_failure(void)
 {
-	ft_dprintf(2, "Failed to send signals!\n");
+	ft_dprintf(2, "\033[31mFailed to send signals!\n");
 	ft_dprintf(2, "Please verify the server PID is correct.\n");
 	exit(EXIT_FAILURE);
 }
@@ -40,7 +40,7 @@ void	force_kill(int pid, int sig)
 	{
 		usleep(10);
 		i++;
-		if (i > 10)
+		if (i > 50)
 		{
 			force_kill(pid, sig);
 			return ;
@@ -70,8 +70,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_dprintf(2, "Invalid arguments!\n");
-		ft_dprintf(2, "%s {server pid} {message}", argv[0]);
+		ft_dprintf(2, "\033[1;31mInvalid arguments!\n");
+		ft_dprintf(2, "\033[0;36m%s {server pid} {message}\n", argv[0]);
 		return (EXIT_FAILURE);
 	}
 	signal(SIGUSR1, catch_signal);

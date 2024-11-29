@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:42:03 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/29 16:49:23 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/29 19:33:56 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(void)
 {
 	struct sigaction	act;
 
-	ft_printf("Server PID: %d\n", getpid());
+	ft_printf("\033[1;33mServer PID: \033[1;32m%d\033[0m\n", getpid());
 	act.sa_sigaction = catch_signal;
 	act.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &act, NULL);
