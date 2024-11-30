@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:42:03 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/29 19:33:56 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/30 12:59:34 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(void)
 
 	ft_printf("\033[1;33mServer PID: \033[1;32m%d\033[0m\n", getpid());
 	act.sa_sigaction = catch_signal;
+	sigemptyset(&act.sa_mask);
 	act.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
